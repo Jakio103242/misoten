@@ -37,5 +37,8 @@ public class InvestigationUI : MonoBehaviour
         await UniTask.WaitUntil(() => Keyboard.current.spaceKey.wasPressedThisFrame, cancellationToken: token);
 
         this.gameObject.SetActive(false);
+
+        //ŒJ‚è•Ô‚µˆ—‚ğs‚¤
+        ShowInvestigationUI(this.GetCancellationTokenOnDestroy()).Forget();
     }
 }
