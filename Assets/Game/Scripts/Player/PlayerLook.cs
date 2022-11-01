@@ -14,56 +14,51 @@ namespace Player
         //感度
         [SerializeField] private float sensX;
         [SerializeField] private float sensY;
+        [SerializeField] private float rotateSpeed;
 
-        private Vector2 lookValue;
-        private float mouseX;
-        private float mouseY;
+        [SerializeField] private Transform eye;
+        [SerializeField] private PlayerMovements movements;
 
         private float multiplier;
 
-        private float rotationX;
+        private float eyeRotationX;
         private float rotationY;
+
+        private Quaternion targetRot;
+        private Vector3 tmpVelocity;
 
         void Awake() 
         {
-            input.OnLook.Subscribe(value => Look(value)).AddTo(this);
+            input.OnLook.Subscribe(value => RotateEye(value)).AddTo(this);
         }
 
-        private void OnLook(InputAction.CallbackContext obj) 
-        {
-            var value = obj.ReadValue<Vector2>();
-            rotationY += value.x * sensX * multiplier;
-            rotationX -= value.y * sensY * multiplier;
-
-            rotationX = Mathf.Clamp(rotationX, -90f, 90f);
-        }
-
-        // Start is called before the first frame update
         void Start() 
         {
-            rotationY = this.transform.rotation.eulerAngles.y;
-            //rotationX = this.transform.rotation.x;
+            eyeRotationX = eye.localRotation.x;
 
             multiplier = 0.1f;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            tmpVelocity = movements.Velocity;
         }
 
-        // Update is called once per frame
         void Update() 
         {
-            Quaternion deffRot = Quaternion.AngleAxis(rotationX, Vector3.right);
-            deffRot = Quaternion.AngleAxis(rotationY, transform.up);
-            transform.rotation = Quaternion.Euler(0f, rotationY, 0f);
+            if(tmpVelocity.sqrMagnitude > 0.5f * 0.5f)
+            {
+                targetRot = Quaternion.LookRotation(tmpVelocity.normalized, Vector3.up);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, rotateSpeed * Time.deltaTime);
+            }
+            tmpVelocity = new Vector3(movements.Velocity.x, 0, movements.Velocity.z);
         }
 
-        void Look(Vector2 value) 
+        void RotateEye(Vector2 value) 
         {
-            lookValue = value;
-            rotationY += value.x * sensX * multiplier;
-            rotationX -= value.y * sensY * multiplier;
+            eyeRotationX -= value.y * sensY * multiplier;
 
-            rotationX = Mathf.Clamp(rotationX, -90f, 90f);
+            eyeRotationX = Mathf.Clamp(eyeRotationX, -90f, 90f);
+
+            eye.localRotation = Quaternion.AngleAxis(eyeRotationX, Vector3.right);
         }
     }
 }

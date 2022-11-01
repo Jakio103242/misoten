@@ -10,8 +10,6 @@ namespace Player
         private void Start()
         {
             
-        }
-
-        
+        } 
     }
 }

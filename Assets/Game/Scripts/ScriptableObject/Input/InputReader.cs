@@ -73,7 +73,7 @@ namespace Game.Input {
             {
                 onDash.OnNext(Unit.Default);
             }
-            else if(ctx.phase == InputActionPhase.Started)
+            else if(ctx.phase == InputActionPhase.Canceled)
             {
                 onWalk.OnNext(Unit.Default);
             }
