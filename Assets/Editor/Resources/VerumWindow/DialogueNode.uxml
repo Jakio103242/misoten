@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML xmlns:engine="UnityEngine.UIElements" xmlns:ui="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" >
+   <!-- 要素をまとめる親 -->
+   <ui:VisualElement name="contentContainer">
+       <engine:VisualElement name="parameterContainer">
+           <!-- 「名前」という名目のテキスト入力領域 -->
+           <engine:TextField name="name" label="名前"/>
+       </engine:VisualElement>
+       <engine:VisualElement name="explanationContainer">
+           <!-- 「説明」という名目の複数行テキスト入力領域 -->
+           <engine:Foldout text="説明" name="MyFoldout" value="true">
+               <!-- <engine:Label name="explanationLabel" text="説明"/> -->
+               <engine:TextField name="explanationField" multiline="true"/>
+           </engine:Foldout>
+       </engine:VisualElement>
+   </ui:VisualElement>
+</engine:UXML>

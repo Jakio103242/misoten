@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
+>
+    <engine:VisualElement>
+        <editor:Toolbar name="verumToolbar">
+            <editor:ToolbarSpacer flex="true"/>
+            <engine:Label text="FileName" style="-unity-text-align: middle-center"/>
+            <editor:ToolbarSpacer flex="true"/>
+            <engine:TextField name="inputFileName" multiline="true"/>
+            <engine:Button name="saveButton" text="Save"/>
+            <engine:Button name="loadButton" text="Load"/>
+        </editor:Toolbar>
+    </engine:VisualElement>
+</engine:UXML>
