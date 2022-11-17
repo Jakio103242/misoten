@@ -5,13 +5,13 @@ using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine.InputSystem;
-
+using UniRx;
 
 public class InvestigationUI : MonoBehaviour
 {
     [SerializeField]
     [Header("•\Ž¦‚³‚ê‚Ä‚¢‚é‚©")]
-    public bool dislay;
+    public ReactiveProperty<bool> dislay;
 
     private void Start()
     {
