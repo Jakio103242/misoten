@@ -37,6 +37,8 @@ namespace Player
         [SerializeField] float gravity;
         private CharacterController controller;
 
+        private Animator animator;
+
         void Awake()
         {
             input.OnMove.Subscribe(value => Move(value)).AddTo(this);
@@ -47,6 +49,8 @@ namespace Player
         void Start() 
         {
             controller = GetComponent<CharacterController>();
+
+            animator = GetComponent<Animator>();
 
             accelerationMag = walkSpeed / timeToMaxSpeed;
             velocity = Vector3.zero;
@@ -65,6 +69,8 @@ namespace Player
             {
                 case State.None:
                     velocity = Vector3.zero;
+
+                    animator.Play("Idle");
                     break;
                 case State.Walk:
                 case State.Dash:
@@ -73,6 +79,8 @@ namespace Player
                     {
                         velocity = moveAcceleration.normalized * maxSpeed;
                     }
+
+                    animator.Play("Walk");
                     break;
                 default:
                     break;
