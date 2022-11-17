@@ -7,31 +7,40 @@ using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine.InputSystem;
 using UniRx;
+using TMPro;
 
 public class SerifDisplay : MonoBehaviour
 {
     public DialogueData Dialogue;
-    public Text NameText;
-    public Text QuoteText;
+    public Image SerifImage;
+    public TextMeshProUGUI NameText;
+    public TextMeshProUGUI QuoteText;
+
 
     [SerializeField]
     [Header("セリフを表示する")]
     BoolReactiveProperty Display = new BoolReactiveProperty(false);
 
-    Text nametext;
-    Text quotetext;
+    TextMeshProUGUI nametext;
+    TextMeshProUGUI quotetext;
 
     private bool calledOnce;
 
     private void Start()
     {
-        nametext = NameText.GetComponent<Text>();
-        quotetext = QuoteText.GetComponent<Text>();
+        nametext = NameText.GetComponent<TextMeshProUGUI>();
+        quotetext = QuoteText.GetComponent<TextMeshProUGUI>();
         calledOnce = false;
     }
 
     private void Update()
     {
+        ////デバッグ用
+        //if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        //{
+        //    SetBoolSerifDisplay(true);
+        //}
+
         //Displayの値がtrueのときのみ処理を行う
         if (Display.Value == true && calledOnce == false)
         {
@@ -51,6 +60,7 @@ public class SerifDisplay : MonoBehaviour
         calledOnce = true;
 
         //UIオブジェクト表示
+        SerifImage.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         nametext.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         quotetext.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -65,8 +75,9 @@ public class SerifDisplay : MonoBehaviour
 
             //セリフ終了
             if (i == data.Dialogue.Count-1)
-            {     
+            {
                 //UIオブジェクト非表示
+                SerifImage.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
                 nametext.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
                 quotetext.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 
