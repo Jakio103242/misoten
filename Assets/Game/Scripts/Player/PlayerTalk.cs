@@ -24,7 +24,7 @@ namespace Player
         {
             if(Physics.SphereCast(transform.position, radius, transform.forward, out hit, range))
             {
-                if(hit.transform.TryGetComponent(out Interactable intactable))
+                if(hit.transform.TryGetComponent(out Investigatable investigatable))
                 {
                     
                 }
