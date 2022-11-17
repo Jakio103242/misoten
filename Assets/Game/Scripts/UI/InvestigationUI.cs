@@ -5,40 +5,72 @@ using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine.InputSystem;
-
-
+using UniRx;
+using TMPro;
 public class InvestigationUI : MonoBehaviour
 {
     [SerializeField]
-    [Header("表示されているか")]
-    public bool dislay;
+    [Header("調査UIを表示する")]
+    BoolReactiveProperty InvestigationDisplay = new BoolReactiveProperty(false);
+
+    [SerializeField]
+    private TextMeshProUGUI NameText;
+
+    [SerializeField]
+    private TextMeshProUGUI InvestigationText;
+
+    TextMeshProUGUI nametext;
+    TextMeshProUGUI investigationText;
+
+    private bool calledOnce;
 
     private void Start()
     {
-        ShowInvestigationUI(this.GetCancellationTokenOnDestroy()).Forget();
+        nametext = NameText.GetComponent<TextMeshProUGUI>();
+        investigationText = InvestigationText.GetComponent<TextMeshProUGUI>();
+
+        calledOnce = false;
     }
 
     void Update()
     {
-        
+        ////デバッグ用
+        //if (Mouse.current.leftButton.wasPressedThisFrame)
+        //{
+        //    SetBoolInvestigationDisplay(true);
+        //}
+
+
+        //InvestigationDisplayの値がtrueのときのみ処理を行う
+        if (InvestigationDisplay.Value == true && calledOnce == false)
+        {
+            ShowInvestigationUI(this.GetCancellationTokenOnDestroy()).Forget();
+        }
+
     }
 
+    //表示フラグを変更する
+    public void SetBoolInvestigationDisplay(bool setbool)
+    {
+        InvestigationDisplay.Value = setbool;
+    }
+
+    //調査UIを表示する
     private async UniTask ShowInvestigationUI(CancellationToken token)
     {
-        this.gameObject.SetActive(false);
-
-        //調査の範囲に入るまで待機（今は左クリックで代用）
-        await UniTask.WaitUntil(() => Mouse.current.leftButton.wasPressedThisFrame, cancellationToken: token);
-
-        //以下UI表示
-        this.gameObject.SetActive(true);
+        //UI表示
+        nametext.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        investigationText.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
         //範囲外に出たら消す（今はスペースキーで代用）
         await UniTask.WaitUntil(() => Keyboard.current.spaceKey.wasPressedThisFrame, cancellationToken: token);
 
-        this.gameObject.SetActive(false);
+        //UI非表示
+        nametext.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+        investigationText.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 
-        //繰り返し処理を行う
-        ShowInvestigationUI(this.GetCancellationTokenOnDestroy()).Forget();
+        InvestigationDisplay.Value = false;
+        calledOnce = false;
+
     }
 }
