@@ -29,6 +29,10 @@ public class InvestigationUI : MonoBehaviour
         nametext = NameText.GetComponent<TextMeshProUGUI>();
         investigationText = InvestigationText.GetComponent<TextMeshProUGUI>();
 
+        //UI”ñ•\Ž¦
+        nametext.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+        investigationText.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+
         calledOnce = false;
         Debug.Log(InvestigationDisplay.Value);
     }

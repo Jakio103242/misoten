@@ -31,6 +31,12 @@ public class SerifDisplay : MonoBehaviour
         nametext = NameText.GetComponent<TextMeshProUGUI>();
         quotetext = QuoteText.GetComponent<TextMeshProUGUI>();
         calledOnce = false;
+
+        //UIオブジェクト非表示
+        SerifImage.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+        nametext.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+        quotetext.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+
     }
 
     private void Update()
