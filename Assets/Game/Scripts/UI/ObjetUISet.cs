@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ObjetUISet : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class ObjetUISet : MonoBehaviour
     [Header("ƒZƒŠƒtUI")]
     private GameObject SerifUI;
 
+    private bool display;
+
     InvestigationUI invesScript;
     SerifDisplay serifScript;
 
@@ -19,15 +22,32 @@ public class ObjetUISet : MonoBehaviour
     {
         invesScript = InvesUI.GetComponent<InvestigationUI>();
         serifScript = SerifUI.GetComponent<SerifDisplay>();
+        display = false;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void Update()
     {
-        invesScript.SetBoolInvestigationDisplay(true);
+        if (display == true && Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            serifScript.SetBoolSerifDisplay(true);
+        }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        invesScript.SetBoolInvestigationDisplay(false);
+        if (other.gameObject.name == "Eda")
+        {
+            invesScript.SetBoolInvestigationDisplay(true);
+            display = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name == "Eda")
+        {
+            invesScript.SetBoolInvestigationDisplay(false);
+            display = false;
+        }
     }
 }
