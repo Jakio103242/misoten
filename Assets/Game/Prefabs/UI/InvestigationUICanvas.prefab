@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u8ABF\u3079\u308B"
+  m_text: "\u8ABF\u67FB(Space)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 994205a6c335f88469e3965e48fc3964, type: 2}
   m_sharedMaterial: {fileID: 3380652437141823006, guid: 994205a6c335f88469e3965e48fc3964,
@@ -76,8 +76,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -331,8 +331,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 3456106496
-  m_fontColor: {r: 0, g: 0, b: 0, a: 0.80784315}
+    rgba: 3472883711
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0.80784315}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
