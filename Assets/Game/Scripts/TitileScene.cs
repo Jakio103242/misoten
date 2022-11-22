@@ -17,5 +17,9 @@ public class TitileScene : MonoBehaviour
             FadeManager.FadeOut("AlphaScene_UI");
         }
 
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            Application.Quit();
+        }
     }
 }
