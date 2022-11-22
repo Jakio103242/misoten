@@ -34,6 +34,7 @@ public class InvestigationUI : MonoBehaviour
         investigationText.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 
         calledOnce = false;
+        Debug.Log(InvestigationDisplay.Value);
     }
 
     void Update()
@@ -67,7 +68,7 @@ public class InvestigationUI : MonoBehaviour
         investigationText.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
         //範囲外に出たら消す（今はスペースキーで代用）
-        await UniTask.WaitUntil(() => Keyboard.current.spaceKey.wasPressedThisFrame, cancellationToken: token);
+        await UniTask.WaitUntil(() => Keyboard.current.spaceKey.wasPressedThisFrame || InvestigationDisplay.Value == false, cancellationToken: token);
 
         //UI非表示
         nametext.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
