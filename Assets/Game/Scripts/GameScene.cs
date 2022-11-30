@@ -7,7 +7,7 @@ public class GameScene : MonoBehaviour
 {
     void Start()
     {
-        FadeManager.FadeIn();
+        FadeManager.FadeIn(0.4f);
     }
 
     void Update()

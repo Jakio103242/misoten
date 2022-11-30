@@ -9,17 +9,20 @@ using UnityEngine.SceneManagement;
 
 /*　〇特定のシーンをフェードインで始めたい場合
  *    そのシーン内にある何れかのスクリプトのStart()内に以下の1行を追加
- *     FadeManager.FadeIn()；
+ *     FadeManager.FadeIn(フェードの秒数)；
  *  
  *  〇現在のシーンをフェードアウトで終わって、次のシーンにフェードインした場合
  *    任意のタイミングで以下の一行を追加
- *    FadeManager.FadeOut(遷移したいシーンの名前);
+ *    FadeManager.FadeOut(遷移したいシーンの名前,フェードの秒数);
  *    
  *    シーン遷移も同時に出来ます。
  */
 
 public class FadeManager : MonoBehaviour
 {
+    //フェードインの終了状況を取得
+    public static bool FadeInFinish;
+
     //フェード用のCanvasとImage
     private static Canvas fadeCanvas;
     private static Image fadeImage;
@@ -32,7 +35,7 @@ public class FadeManager : MonoBehaviour
     public static bool IsFadeOut = false;
 
     //フェードの長さ（単位は秒）
-    private static float fadeTime = 0.4f;
+    private static float fadeLength;
 
     //遷移先のシーン名
     private static string nextScene;
@@ -43,6 +46,8 @@ public class FadeManager : MonoBehaviour
     //フェード用のCanvasとImage生成
     static void Init()
     {
+        FadeInFinish = false;
+
         //フェード用のCanvas生成
         GameObject FadeCanvasObject = new GameObject("CanvasFade");
         fadeCanvas = FadeCanvasObject.AddComponent<Canvas>();
@@ -63,17 +68,21 @@ public class FadeManager : MonoBehaviour
     }
 
     //フェードイン開始
-    public static void FadeIn()
+    //フェードの秒数
+    public static void FadeIn(float fadeTime)
     {
+        fadeLength = fadeTime;
         if (fadeImage == null) Init();
         fadeImage.color = Color.black;
         IsFadeIn = true;
     }
 
     //フェードアウト開始
-    //引数は遷移したいシーンのシーン名
-    public static void FadeOut(string SceneName)
+    //引数は遷移したいシーンのシーン名,フェードの秒数
+    public static void FadeOut(string SceneName,float fadeTime)
     {
+        FadeInFinish = false;
+        fadeLength = fadeTime;
         FadeIndex = false;
         if (fadeImage == null) Init();
         nextScene = SceneName;
@@ -84,8 +93,10 @@ public class FadeManager : MonoBehaviour
 
     //フェードアウト開始
     //引数は遷移したいシーンのシーン番号
-    public static void FadeOut(int SceneNameIndex)
+    public static void FadeOut(int SceneNameIndex,float fadeTime)
     {
+        FadeInFinish = false;
+        fadeLength = fadeTime;
         FadeIndex = true;
         if (fadeImage == null) Init();
         nextSceneIndex = SceneNameIndex;
@@ -100,7 +111,7 @@ public class FadeManager : MonoBehaviour
         if (IsFadeIn)
         {
             //経過時間から透明度計算
-            alpha -= Time.deltaTime / fadeTime;
+            alpha -= Time.deltaTime / fadeLength;
 
             //フェードイン終了判定
             if (alpha <= 0.0f)
@@ -108,6 +119,7 @@ public class FadeManager : MonoBehaviour
                 IsFadeIn = false;
                 alpha = 0.0f;
                 fadeCanvas.enabled = false;
+                FadeInFinish = true;
             }
 
             //フェード用Imageの色・透明度設定
@@ -116,7 +128,7 @@ public class FadeManager : MonoBehaviour
         else if (IsFadeOut)
         {
             //経過時間から透明度計算
-            alpha += Time.deltaTime / fadeTime;
+            alpha += Time.deltaTime / fadeLength;
 
             //フェードアウト終了判定
             if (alpha >= 1.0f)
