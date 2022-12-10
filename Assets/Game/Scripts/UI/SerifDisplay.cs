@@ -18,7 +18,6 @@ public class SerifDisplay : MonoBehaviour
 
 
     [SerializeField]
-    [Header("ƒZƒŠƒt‚ð•\Ž¦‚·‚é")]
     BoolReactiveProperty Display = new BoolReactiveProperty(false);
 
     TextMeshProUGUI nametext;
