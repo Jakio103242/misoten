@@ -10,7 +10,6 @@ using TMPro;
 public class InvestigationUI : MonoBehaviour
 {
     [SerializeField]
-    [Header("í≤ç∏UIÇï\é¶Ç∑ÇÈ")]
     BoolReactiveProperty InvestigationDisplay = new BoolReactiveProperty(false);
 
     [SerializeField]
