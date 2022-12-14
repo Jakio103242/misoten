@@ -394,6 +394,7 @@ GameObject:
   - component: {fileID: 4537151834780180}
   - component: {fileID: 33768757609564228}
   - component: {fileID: 23574824954533540}
+  - component: {fileID: 1788643985540239446}
   m_Layer: 0
   m_Name: kitchen-cabinet02
   m_TagString: Untagged
@@ -466,3 +467,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1788643985540239446
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883908903774992}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 0.5, z: 0.39999998}
+  m_Center: {x: -0.00000011920928, y: -0.24999976, z: 0.19999999}
