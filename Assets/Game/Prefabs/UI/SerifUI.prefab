@@ -119,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dialogue: {fileID: 0}
   SerifImage: {fileID: 3214813382688861217}
+  EdaImage: {fileID: 8928745616872875830}
   NameText: {fileID: 3848144423598073265}
   QuoteText: {fileID: 3848144423757760249}
   Display:
