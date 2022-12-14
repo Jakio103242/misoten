@@ -13,6 +13,7 @@ public class SerifDisplay : MonoBehaviour
 {
     public DialogueData Dialogue;
     public Image SerifImage;
+    public Image EdaImage;
     public TextMeshProUGUI NameText;
     public TextMeshProUGUI QuoteText;
 
@@ -33,6 +34,7 @@ public class SerifDisplay : MonoBehaviour
 
         //UIオブジェクト非表示
         SerifImage.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+        EdaImage.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         nametext.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         quotetext.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 
@@ -40,12 +42,6 @@ public class SerifDisplay : MonoBehaviour
 
     private void Update()
     {
-        ////デバッグ用
-        //if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        //{
-        //    SetBoolSerifDisplay(true);
-        //}
-
         //Displayの値がtrueのときのみ処理を行う
         if (Display.Value == true && calledOnce == false)
         {
@@ -66,6 +62,7 @@ public class SerifDisplay : MonoBehaviour
 
         //UIオブジェクト表示
         SerifImage.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        EdaImage.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         nametext.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         quotetext.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -83,6 +80,7 @@ public class SerifDisplay : MonoBehaviour
             {
                 //UIオブジェクト非表示
                 SerifImage.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+                EdaImage.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
                 nametext.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
                 quotetext.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 
