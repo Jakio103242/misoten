@@ -175,7 +175,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4538813090783860}
-  - component: {fileID: 2176196802937113796}
   m_Layer: 0
   m_Name: shoe-cabinet01
   m_TagString: Untagged
@@ -201,20 +200,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &2176196802937113796
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402186109390358}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &1843560857840136
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,6 +211,7 @@ GameObject:
   - component: {fileID: 4328166419993720}
   - component: {fileID: 33773131012353984}
   - component: {fileID: 23387103565217346}
+  - component: {fileID: 6122684671066913927}
   m_Layer: 0
   m_Name: shoe-cabinet01
   m_TagString: Untagged
@@ -298,3 +284,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6122684671066913927
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843560857840136}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.80000013, y: 0.9, z: 0.38000008}
+  m_Center: {x: -9.094945e-15, y: 0.45, z: -0.010000001}

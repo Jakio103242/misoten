@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 4786029178095566}
   - component: {fileID: 33381656671516318}
   - component: {fileID: 23007157227337948}
+  - component: {fileID: 4611219692180208755}
   m_Layer: 0
   m_Name: clock01
   m_TagString: Untagged
@@ -250,6 +251,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4611219692180208755
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241718063170174}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.29999977, y: 0.2999997, z: 0.039999995}
+  m_Center: {x: 0, y: -0.00000011920929, z: 0}
 --- !u!1 &1372006558198454
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +356,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4012654241355300}
-  - component: {fileID: -5534343748352957669}
   m_Layer: 0
   m_Name: clock01_2
   m_TagString: Untagged
@@ -369,17 +382,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &-5534343748352957669
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1622581679573348}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
