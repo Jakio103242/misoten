@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
-using Data.Dialoue;
+using Game.Story;
 
-public class Investigatable : MonoBehaviour, IInvestigatable
+namespace Game.Intaract
 {
-    public DialogueData DialogueData;
-    public bool HintActive;
-
-    void Start()
+    public class Investigatable : Intaractable
     {
-        HintActive = false;
+        [SerializeField] private StoryInvestigationEvent storyIncident;
+        public override StoryIncident StoryIncident() => storyIncident;
     }
 }

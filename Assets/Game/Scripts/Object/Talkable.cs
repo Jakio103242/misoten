@@ -1,7 +1,11 @@
-using UnityEngine;
-using Data.Dialoue;
+﻿using UnityEngine;
+using Game.Story;
 
-public class Talkable : MonoBehaviour, ITalkable
+namespace Game.Intaract
 {
-    [SerializeField] private DialogueData dialogueData;
+    public class Talkable : Intaractable
+    {
+        public StoryTalkEvent storyIncident;
+        public override StoryIncident StoryIncident() => storyIncident;
+    }
 }

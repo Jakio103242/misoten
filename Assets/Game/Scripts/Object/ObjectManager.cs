@@ -1,62 +1,77 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UniRx;
+using Cysharp.Threading.Tasks;
 using Game.Input;
+using Game.Story;
 
-public class ObjectManager : MonoBehaviour
+namespace Game.Intaract
 {
-    [SerializeField] InputReader input;
-    [SerializeField] List<Talkable> talkableObjects;
-    [SerializeField] List<Investigatable> interactObjects;
-    [SerializeField] float checkDistance;
-    [SerializeField] Transform playerTransform;
-
-    void Start()
+    public class ObjectManager : MonoBehaviour
     {
-    }
+        [SerializeField] InputReader input;
+        [SerializeField] DialogueManager dialogueManager;
+        [SerializeField] List<Intaractable> intaractables;
+        public List<Intaractable> Intaractables => intaractables;
+        [SerializeField] float displayDistance;
+        [SerializeField] float investigateDistance;
+        [SerializeField] Transform playerTransform;
+        int nearestIndex = -1;
 
-    void Update()
-    {
-        if(Keyboard.current.spaceKey.wasPressedThisFrame)
+        public Intaractable NearestIntaractableObject()
         {
-            foreach(var interactObject in interactObjects)
-            {
-                if(interactObject.HintActive)
-                {
-                    Debug.Log(interactObject.DialogueData.Dialogue[0].name);
-                }
+            if(nearestIndex < 0 || !intaractables[nearestIndex].StoryIncident().Active) return null;
+            float distance;
+            distance = (playerTransform.position - intaractables[nearestIndex].transform.position).sqrMagnitude;
+            if(distance * distance > investigateDistance * investigateDistance) return null;
+            return intaractables[nearestIndex];
+        }
+
+        void Start()
+        {
+            OnCheckVisibleCamera(this.GetCancellationTokenOnDestroy()).Forget();
+        }
+
+        void Update()
+        {
+        }
+
+        async UniTask OnCheckVisibleCamera(CancellationToken token)
+        {
+            while(true) {
+                await UniTask.Delay(System.TimeSpan.FromSeconds(0.2f), cancellationToken: token);
+                CheckActibleHint();
             }
         }
-    }
 
-    void FixedUpdate()
-    {
-        if(input.GameInputs.Player.Move.inProgress) CheckVisibleCamera();
-    }
-
-    public void CheckVisibleCamera()
-    {
-        Vector3 viewportPos;
-        float distance;
-        for(int index = 0; index < interactObjects.Count; index++)
+        public void CheckActibleHint()
         {
-            distance = (playerTransform.position - interactObjects[index].transform.position).sqrMagnitude;
-            if(distance * distance > checkDistance * checkDistance)
+            float distance;
+            float nearestDistance = 0;
+            nearestIndex = -1;
+            
+            for(int index = 0; index < intaractables.Count; index++)
             {
-                interactObjects[index].HintActive = false;
-                continue;
-            }
-            Debug.Log("a");
-            viewportPos = Camera.main.WorldToViewportPoint(interactObjects[index].transform.position);
-            if((viewportPos.x >= 0 && viewportPos.y >= 0) && (viewportPos.x <= 1 && viewportPos.y <= 1) && viewportPos.z >= 0)
-            {
-                interactObjects[index].HintActive = true;
-            }
-            else 
-            {
-                interactObjects[index].HintActive = false;
+                intaractables[index].HintActive = false;
+
+                if(intaractables[index].Completed) continue;
+                if(!intaractables[index].StoryIncident().Active) continue;
+
+                distance = (playerTransform.position - intaractables[index].transform.position).sqrMagnitude;
+                if(distance * distance > displayDistance * displayDistance) continue;
+
+                if(intaractables[index].Renderer.isVisible)
+                {
+                    intaractables[index].HintActive = true;
+                    if(nearestIndex == -1) {
+                        nearestIndex = index;
+                        nearestDistance = distance;
+                    }
+                    if(nearestDistance < distance) continue;
+                    nearestIndex = index;
+                    nearestDistance = distance;
+                }
             }
         }
     }
