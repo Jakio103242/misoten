@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Data.Dialoue;
+using Game.Data;
 using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
 using System.Threading;

@@ -40,7 +40,7 @@ namespace Game.Intaract
         async UniTask OnCheckVisibleCamera(CancellationToken token)
         {
             while(true) {
-                await UniTask.Delay(System.TimeSpan.FromSeconds(0.2f), cancellationToken: token);
+                await UniTask.Delay(System.TimeSpan.FromSeconds(0.5f), cancellationToken: token);
                 CheckActibleHint();
             }
         }

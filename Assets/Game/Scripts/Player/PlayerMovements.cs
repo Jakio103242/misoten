@@ -68,7 +68,7 @@ namespace Game.Player
                 case State.None:
                     velocity = Vector3.zero;
 
-                    playerAnim.AnimationIdle();
+                    //playerAnim?.AnimationIdle();
                     break;
                 case State.Walk:
                 case State.Dash:
@@ -78,7 +78,7 @@ namespace Game.Player
                         velocity = moveAcceleration.normalized * maxSpeed;
                     }
 
-                    playerAnim.AnimationWalk();
+                    //playerAnim?.AnimationWalk();
                     break;
                 default:
                     break;
