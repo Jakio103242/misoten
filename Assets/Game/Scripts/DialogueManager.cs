@@ -1,11 +1,15 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using TMPro;
-using Data.Dialoue;
+using Game.Data;
+using Game.Intaract;
+using Game.Story;
 
 public class DialogueManager : MonoBehaviour
 {
-    [SerializeField] new private TextMeshProUGUI name;
-    [SerializeField] private TextMeshProUGUI quote;
+    [SerializeField] private List<TextMeshProUGUI> speakerNames;
+    [SerializeField] private List<TextMeshProUGUI> quotes;
+    [SerializeField] private ObjectManager objectManager;
 
     private void Start()
     {
@@ -14,13 +18,27 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-
+        for(int index = 0; index < objectManager.Intaractables.Count; index++)
+        {
+            if(objectManager.Intaractables[index].HintActive)
+            {
+                SetDialogue(index, ((StoryInvestigationEvent)objectManager.Intaractables[index].StoryIncident()).DialogueData);
+            }
+            else
+            {
+                CleanDialogue(index);
+            }
+        }
     }
 
-    public void StartDialogue(DialogueData dialogueData)
+    void SetDialogue(int index, DialogueData dialogueData)
     {
-        
-        name.text = dialogueData.Dialogue[0].name;
-        quote.text = dialogueData.Dialogue[0].quote;
+        speakerNames[index].text = dialogueData.Dialogue[0].name;
+        quotes[index].text = dialogueData.Dialogue[0].quote;
+    }
+    void CleanDialogue(int index)
+    {
+        speakerNames[index].text = "";
+        quotes[index].text = "";
     }
 }
