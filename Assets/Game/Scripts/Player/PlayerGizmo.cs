@@ -1,7 +1,7 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UniRx;
 
-namespace Player
+namespace Game.Player
 {
     public class PlayerGizmo : MonoBehaviour
     {

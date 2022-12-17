@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 9085711007406702361}
   - component: {fileID: 1268228498759136642}
   - component: {fileID: -2813938600768390781}
+  - component: {fileID: -8782816188178644880}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -206,9 +207,7 @@ MonoBehaviour:
   dashMag: 2
   walkSpeed: 4
   timeToMaxSpeed: 0.1
-  jumpSpeed: 5
   gravity: -9.8
-  jumped: 0
 --- !u!114 &9085711007406702361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +255,21 @@ MonoBehaviour:
   input: {fileID: 11400000, guid: de7f4b1c30dec79448a3630b1bac8735, type: 2}
   range: 5
   radius: 0.2
+--- !u!114 &-8782816188178644880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4973307833570282946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e2305fa579e96245bb9fa6ac52111ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 11400000, guid: de7f4b1c30dec79448a3630b1bac8735, type: 2}
+  dialogueManager: {fileID: 0}
+  objectManager: {fileID: 0}
 --- !u!1 &7187463614634346122
 GameObject:
   m_ObjectHideFlags: 0

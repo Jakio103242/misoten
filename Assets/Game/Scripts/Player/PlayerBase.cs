@@ -2,11 +2,10 @@
 using UniRx;
 using Game.Input;
 
-namespace Player 
+namespace Game.Player 
 {
     public class PlayerBase : MonoBehaviour
-    {
-        //public 
+    { 
         private void Start()
         {
             

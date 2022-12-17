@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 using UniRx;
 using Game.Input;
 
-namespace Player
+namespace Game.Player
 {
     public class PlayerLook : MonoBehaviour 
     {

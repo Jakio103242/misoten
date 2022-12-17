@@ -1,0 +1,3 @@
+.toolbar-textField {
+    min-width 10px;
+}

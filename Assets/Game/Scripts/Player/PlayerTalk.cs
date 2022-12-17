@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using Game.Input;
 using UniRx;
+using Game.Intaract;
 
-namespace Player
+namespace Game.Player
 {
     public class PlayerTalk : MonoBehaviour
     {
@@ -24,7 +25,7 @@ namespace Player
         {
             if(Physics.SphereCast(transform.position, radius, transform.forward, out hit, range))
             {
-                if(hit.transform.TryGetComponent(out Interactable intactable))
+                if(hit.transform.TryGetComponent(out Investigatable investigatable))
                 {
                     
                 }

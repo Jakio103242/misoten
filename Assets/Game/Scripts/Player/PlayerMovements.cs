@@ -2,7 +2,7 @@
 using UniRx;
 using Game.Input;
 
-namespace Player 
+namespace Game.Player 
 {
     public class PlayerMovements : MonoBehaviour 
     {
