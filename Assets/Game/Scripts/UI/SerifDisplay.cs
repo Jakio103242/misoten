@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Game.Data;
@@ -32,7 +32,7 @@ public class SerifDisplay : MonoBehaviour
         quotetext = QuoteText.GetComponent<TextMeshProUGUI>();
         calledOnce = false;
 
-        //UIƒIƒuƒWƒFƒNƒg”ñ•\¦
+        //UIã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆéè¡¨ç¤º
         SerifImage.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         EdaImage.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         nametext.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
@@ -42,43 +42,43 @@ public class SerifDisplay : MonoBehaviour
 
     private void Update()
     {
-        //Display‚Ì’l‚ªtrue‚Ì‚Æ‚«‚Ì‚İˆ—‚ğs‚¤
+        //Displayã®å€¤ãŒtrueã®ã¨ãã®ã¿å‡¦ç†ã‚’è¡Œã†
         if (Display.Value == true && calledOnce == false)
         {
             OnDisplay(Dialogue, this.GetCancellationTokenOnDestroy()).Forget();
         }
     }
 
-    //•\¦ƒtƒ‰ƒO‚ğ•ÏX‚·‚é
+    //è¡¨ç¤ºãƒ•ãƒ©ã‚°ã‚’å¤‰æ›´ã™ã‚‹
     public void SetBoolSerifDisplay(bool setbool)
     {
         Display.Value = setbool;
     }
 
-    //ƒZƒŠƒt‚ğ•\¦‚·‚é
+    //ã‚»ãƒªãƒ•ã‚’è¡¨ç¤ºã™ã‚‹
     public async UniTask OnDisplay(DialogueData data, CancellationToken token)
     {
         calledOnce = true;
 
-        //UIƒIƒuƒWƒFƒNƒg•\¦
+        //UIã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆè¡¨ç¤º
         SerifImage.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         EdaImage.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         nametext.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         quotetext.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
-        //ƒZƒŠƒt•\¦
+        //ã‚»ãƒªãƒ•è¡¨ç¤º
         for (int i = 0; i < data.Dialogue.Count; i++)
         {
             nametext.text = data.Dialogue[i].name;
             quotetext.text = data.Dialogue[i].quote;
 
-            //¶ƒNƒŠƒbƒN‚ÅŸ‚Öi‰¼j
+            //å·¦ã‚¯ãƒªãƒƒã‚¯ã§æ¬¡ã¸ï¼ˆä»®ï¼‰
             await UniTask.WaitUntil(() => Mouse.current.leftButton.wasPressedThisFrame, cancellationToken: token);
 
-            //ƒZƒŠƒtI—¹
+            //ã‚»ãƒªãƒ•çµ‚äº†
             if (i == data.Dialogue.Count-1)
             {
-                //UIƒIƒuƒWƒFƒNƒg”ñ•\¦
+                //UIã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆéè¡¨ç¤º
                 SerifImage.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
                 EdaImage.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
                 nametext.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);

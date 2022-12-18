@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,7 +28,7 @@ public class InvestigationUI : MonoBehaviour
         nametext = NameText.GetComponent<TextMeshProUGUI>();
         investigationText = InvestigationText.GetComponent<TextMeshProUGUI>();
 
-        //UIîÒï\é¶
+        //UIÈùûË°®Á§∫
         nametext.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         investigationText.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 
@@ -38,14 +38,14 @@ public class InvestigationUI : MonoBehaviour
 
     void Update()
     {
-        ////ÉfÉoÉbÉOóp
+        ////„Éá„Éê„ÉÉ„Ç∞Áî®
         //if (Mouse.current.leftButton.wasPressedThisFrame)
         //{
         //    SetBoolInvestigationDisplay(true);
         //}
 
 
-        //InvestigationDisplayÇÃílÇ™trueÇÃÇ∆Ç´ÇÃÇ›èàóùÇçsÇ§
+        //InvestigationDisplay„ÅÆÂÄ§„Ååtrue„ÅÆ„Å®„Åç„ÅÆ„ÅøÂá¶ÁêÜ„ÇíË°å„ÅÜ
         if (InvestigationDisplay.Value == true && calledOnce == false)
         {
             ShowInvestigationUI(this.GetCancellationTokenOnDestroy()).Forget();
@@ -53,23 +53,23 @@ public class InvestigationUI : MonoBehaviour
 
     }
 
-    //ï\é¶ÉtÉâÉOÇïœçXÇ∑ÇÈ
+    //Ë°®Á§∫„Éï„É©„Ç∞„ÇíÂ§âÊõ¥„Åô„Çã
     public void SetBoolInvestigationDisplay(bool setbool)
     {
         InvestigationDisplay.Value = setbool;
     }
 
-    //í≤ç∏UIÇï\é¶Ç∑ÇÈ
+    //Ë™øÊüªUI„ÇíË°®Á§∫„Åô„Çã
     private async UniTask ShowInvestigationUI(CancellationToken token)
     {
-        //UIï\é¶
+        //UIË°®Á§∫
         nametext.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         investigationText.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
-        //îÕàÕäOÇ…èoÇΩÇÁè¡Ç∑Åiç°ÇÕÉXÉyÅ[ÉXÉLÅ[Ç≈ë„ópÅj
+        //ÁØÑÂõ≤Â§ñ„Å´Âá∫„Åü„ÇâÊ∂à„ÅôÔºà‰ªä„ÅØ„Çπ„Éö„Éº„Çπ„Ç≠„Éº„Åß‰ª£Áî®Ôºâ
         await UniTask.WaitUntil(() => Keyboard.current.spaceKey.wasPressedThisFrame || InvestigationDisplay.Value == false, cancellationToken: token);
 
-        //UIîÒï\é¶
+        //UIÈùûË°®Á§∫
         nametext.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         investigationText.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 

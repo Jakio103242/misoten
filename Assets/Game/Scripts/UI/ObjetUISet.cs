@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,11 +6,11 @@ using UnityEngine.InputSystem;
 public class ObjetUISet : MonoBehaviour
 {
     [SerializeField]
-    [Header("í≤ç∏UI")]
+    [Header("InvesUI")]
     private GameObject InvesUI;
 
     [SerializeField]
-    [Header("ÉZÉäÉtUI")]
+    [Header("SerifUI")]
     private GameObject SerifUI;
 
     private bool display;
