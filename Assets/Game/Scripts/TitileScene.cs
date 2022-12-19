@@ -6,6 +6,9 @@ using UnityEngine.InputSystem;
 public class TitileScene : MonoBehaviour
 {
     [SerializeField]
+    private string nextSceneName;
+
+    [SerializeField]
     private GameObject button;
 
     [SerializeField]
@@ -27,7 +30,7 @@ public class TitileScene : MonoBehaviour
 
     public void StartGame()
     {
-        FadeManager.FadeOut("AlphaScene_UI", 0.4f);
+        FadeManager.FadeOut(nextSceneName, 0.4f);
     }
 
     public void EndGame()
