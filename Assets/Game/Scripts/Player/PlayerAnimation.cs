@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 
-namespace Player
+namespace Game.Player
 {
     public class PlayerAnimation : MonoBehaviour
     {
