@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Phasmagoria.Player
+namespace Game.Player
 {
     public class PlayerCamera : MonoBehaviour
     {
