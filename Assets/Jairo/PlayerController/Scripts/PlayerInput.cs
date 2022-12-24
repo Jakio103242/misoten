@@ -1,6 +1,6 @@
-﻿using Phasmagoria.Player;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using Game.Player;
 
 [RequireComponent(typeof(PlayerController), typeof(PlayerCamera))]
 public class PlayerInput : MonoBehaviour
