@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 1588140290979749888}
   - component: {fileID: 937778032814520697}
   - component: {fileID: 2006615189862812238}
-  - component: {fileID: 3772399272750347796}
+  - component: {fileID: 3623519206796472293}
   m_Layer: 0
   m_Name: PlayerEda
   m_TagString: Player
@@ -524,7 +524,7 @@ MonoBehaviour:
   DebugRays: 0
   AnimationStyle: 0
   ConstantParentalAxisUpdate: 0
---- !u!114 &3772399272750347796
+--- !u!114 &3623519206796472293
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -533,13 +533,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5178907520185452139}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3686ccbaa436447fb268f097701cb27d, type: 3}
+  m_Script: {fileID: 11500000, guid: 079ec47128082b04fb1bce3b70d7d81c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementInput: {fileID: -1921289456859675124, guid: fc396d5829a1fe34585ffd1ac94a4023,
-    type: 3}
-  lookInput: {fileID: 7158132443362529553, guid: fc396d5829a1fe34585ffd1ac94a4023,
-    type: 3}
+  input: {fileID: 11400000, guid: de7f4b1c30dec79448a3630b1bac8735, type: 2}
   lockCursor: 1
   lockGameplayWhenCursorIsVisible: 1
 --- !u!1 &5308125858496370770
