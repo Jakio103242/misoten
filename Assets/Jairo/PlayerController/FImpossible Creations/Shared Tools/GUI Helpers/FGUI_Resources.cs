@@ -2,6 +2,7 @@
 
 using UnityEditor;
 using UnityEngine;
+#pragma warning disable CS0414
 
 namespace FIMSpace.FEditor
 {

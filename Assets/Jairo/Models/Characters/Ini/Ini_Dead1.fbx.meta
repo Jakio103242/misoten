@@ -1,29 +1,9 @@
 fileFormatVersion: 2
-guid: 3774aa41c27d7784e8f5eecb7ed8f270
+guid: 7a01490d3c13ae24aa20e308be085ca7
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Ini_UV1_Head
-    second: {fileID: 2100000, guid: 8ecb418a27312bc40a56fd0f9d53a092, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Ini_UV2_Clothes
-    second: {fileID: 2100000, guid: 4631cb14ebf128e428ad076cbba36c60, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Ini_UV3_Body
-    second: {fileID: 2100000, guid: 5c68215c77207b841aec6cfd279898fd, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Ini_UV4_Hair
-    second: {fileID: 2100000, guid: 09b9406a96fa3594b89ee877aa7a6115, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -67,7 +47,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1

@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1052596728716968423}
   m_LocalRotation: {x: 0.012586622, y: -0.9539512, z: 0.04037956, w: 0.29696515}
-  m_LocalPosition: {x: 0.5, y: 1.5, z: -1.6912956}
+  m_LocalPosition: {x: 0.5, y: 1.5, z: -2}
   m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
-    NearClipPlane: 0.001
+    NearClipPlane: 0.1
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -191,6 +191,8 @@ GameObject:
   - component: {fileID: 937778032814520697}
   - component: {fileID: 2006615189862812238}
   - component: {fileID: 3772399272750347796}
+  - component: {fileID: 9044442102396251381}
+  - component: {fileID: 7596090262416253717}
   m_Layer: 0
   m_Name: PlayerEda
   m_TagString: Player
@@ -353,7 +355,7 @@ MonoBehaviour:
     initLocalRot: {x: 0, y: -0, z: -0, w: 1}
     targetDelayPosition: {x: 0, y: 0, z: 0}
     animatedDelayPosition: {x: 0, y: 0, z: 0}
-    lookWeight: 0.25
+    lookWeight: 1
     lookWeightB: 1
     motionWeight: 1
   - Transform: {fileID: 3078395164133497200}
@@ -373,7 +375,7 @@ MonoBehaviour:
     initLocalRot: {x: 0.034939848, y: 0, z: -0, w: 0.9993894}
     targetDelayPosition: {x: 0, y: 0, z: 0}
     animatedDelayPosition: {x: 0, y: 0, z: 0}
-    lookWeight: 0
+    lookWeight: 0.42005208
     lookWeightB: 1
     motionWeight: 0.42005208
   - Transform: {fileID: 8484842998223443213}
@@ -393,7 +395,7 @@ MonoBehaviour:
     initLocalRot: {x: -6.938894e-18, y: 0, z: -0, w: 1}
     targetDelayPosition: {x: 0, y: 0, z: 0}
     animatedDelayPosition: {x: 0, y: 0, z: 0}
-    lookWeight: 0
+    lookWeight: 0.31880212
     lookWeightB: 1
     motionWeight: 0.31880212
   - Transform: {fileID: 6952277675156776294}
@@ -413,7 +415,7 @@ MonoBehaviour:
     initLocalRot: {x: -6.938894e-18, y: 0, z: -0, w: 1}
     targetDelayPosition: {x: 0, y: 0, z: 0}
     animatedDelayPosition: {x: 0, y: 0, z: 0}
-    lookWeight: 0
+    lookWeight: 0.21502085
     lookWeightB: 1
     motionWeight: 0.21502085
   NoTargetHeadStops: 0
@@ -430,7 +432,7 @@ MonoBehaviour:
   FaloffValueB: 1.1
   BigAngleAutomation: 0
   BigAngleAutomationCompensation: 0
-  AutoBackbonesWeights: 0
+  AutoBackbonesWeights: 1
   CurveSpread: 0
   BackBonesFalloff:
     serializedVersion: 2
@@ -494,7 +496,7 @@ MonoBehaviour:
   LimitHolder: 1
   YRotationLimits: {x: -50, y: 50}
   YElasticRange: 15
-  LookAnimatorAmount: 1
+  LookAnimatorAmount: 0.65
   StartLookPointOffset: {x: 0, y: 0, z: 0}
   AnchorStartLookPoint: 1
   RefreshStartLookPoint: 1
@@ -540,8 +542,51 @@ MonoBehaviour:
     type: 3}
   lookInput: {fileID: 7158132443362529553, guid: fc396d5829a1fe34585ffd1ac94a4023,
     type: 3}
+  interactInput: {fileID: -74333631274851649, guid: fc396d5829a1fe34585ffd1ac94a4023,
+    type: 3}
   lockCursor: 1
   lockGameplayWhenCursorIsVisible: 1
+--- !u!114 &9044442102396251381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5178907520185452139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a87c9fb1e8fd3642b8a0f781552cdd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraRotTransform: {fileID: 8999043825962604112}
+  raycastLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  raycastRate: 0.25
+  detectionRadius: 0.25
+  detectionAngle: 140
+  maxRayDistance: 1.75
+  maxInteractionDistance: 1.25
+  lookAtSmooth: 8
+--- !u!114 &7596090262416253717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5178907520185452139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: Eda
+  nameColor: {r: 0.2028302, g: 0.6521729, b: 1, a: 1}
+  soundEffect: {fileID: 0}
+  portraits: []
+  portraitsFace: 0
+  setSayDialog: {fileID: 0}
+  description: 
 --- !u!1 &5308125858496370770
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,7 +653,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   IgnoreTag: Player
-  CameraRadius: 0.001
+  CameraRadius: 0.2
   DampingIntoCollision: 0
   DampingFromCollision: 2
 --- !u!1 &6146335439665647580

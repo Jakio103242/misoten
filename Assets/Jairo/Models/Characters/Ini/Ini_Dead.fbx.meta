@@ -1,28 +1,33 @@
 fileFormatVersion: 2
-guid: 54849d01070f0474b8287f669c0c9dbf
+guid: 6770a91a8c5f60347bb88cb401d22cac
 ModelImporter:
-  serializedVersion: 21300
+  serializedVersion: 21202
   internalIDToNameTable: []
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Ini_UV1_Head._Bloody
+      name: Ini_UV1_Head
     second: {fileID: 2100000, guid: 8ecb418a27312bc40a56fd0f9d53a092, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Ini_UV2_Clothes_Bloody
+      name: Ini_UV2_Clothes
     second: {fileID: 2100000, guid: 4631cb14ebf128e428ad076cbba36c60, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Ini_UV3_Body_Bloody
+      name: Ini_UV3_Body
     second: {fileID: 2100000, guid: 5c68215c77207b841aec6cfd279898fd, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Ini_UV4_Hair_Bloody
+      name: Ini_UV4_Hair
+    second: {fileID: 2100000, guid: 09b9406a96fa3594b89ee877aa7a6115, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ini_UV5_Eyes
     second: {fileID: 2100000, guid: 09b9406a96fa3594b89ee877aa7a6115, type: 2}
   materials:
     materialImportMode: 2
@@ -67,7 +72,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
@@ -119,7 +124,6 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
-  remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
