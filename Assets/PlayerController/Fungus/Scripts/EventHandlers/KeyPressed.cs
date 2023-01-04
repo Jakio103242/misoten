@@ -2,6 +2,7 @@
 // It is released for free under the MIT open source license (https://github.com/snozbot/fungus/blob/master/LICENSE)
 
 ﻿using UnityEngine;
+ using UnityEngine.InputSystem;
 
 namespace Fungus
 {
@@ -31,26 +32,26 @@ namespace Fungus
         [SerializeField] protected KeyPressType keyPressType;
 
         [Tooltip("Keycode of the key to activate on")]
-        [SerializeField] protected KeyCode keyCode;
+        [SerializeField] protected Key keyCode;
 
         protected virtual void Update()
         {
             switch (keyPressType)
             {
             case KeyPressType.KeyDown:
-                if (Input.GetKeyDown(keyCode))
+                if (Keyboard.current[keyCode].wasPressedThisFrame)
                 {
                     ExecuteBlock();
                 }
                 break;
             case KeyPressType.KeyUp:
-                if (Input.GetKeyUp(keyCode))
+                if (Keyboard.current[keyCode].wasReleasedThisFrame)
                 {
                     ExecuteBlock();
                 }
                 break;
             case KeyPressType.KeyRepeat:
-                if (Input.GetKey(keyCode))
+                if (Keyboard.current[keyCode].isPressed)
                 {
                     ExecuteBlock();
                 }

@@ -56,15 +56,27 @@ public class UITimelineVisualizer : MonoBehaviour
         playPauseInputCache.performed -= OnPlayPausePerformed;
     }
 
-    private void OnStatusUpdated() => instancedParts.ForEach(p => p.Refresh());
+    private void OnStatusUpdated()
+    {
+        if (playerInput.IsCursorLocked)
+            instancedParts.ForEach(p => p.Refresh());
+    } 
 
-    private void OnPreviousPerformed(InputAction.CallbackContext obj) => Select(selectedPartIndex - 1);
+    private void OnPreviousPerformed(InputAction.CallbackContext obj)
+    {
+        if (playerInput.IsCursorLocked)
+            Select(selectedPartIndex - 1);
+    }
 
-    private void OnNextPerformed(InputAction.CallbackContext obj) => Select(selectedPartIndex + 1);
+    private void OnNextPerformed(InputAction.CallbackContext obj)
+    {
+        if (playerInput.IsCursorLocked)
+            Select(selectedPartIndex + 1);
+    }
 
     private void OnPlayPausePerformed(InputAction.CallbackContext obj)
     {
-        if (SelectedPart == null)
+        if (SelectedPart == null || !playerInput.IsCursorLocked)
             return;
         if (timelinePlayer.Current == null)
             timelinePlayer.PlayCinematic(SelectedPart.ID);
@@ -95,7 +107,7 @@ public class UITimelineVisualizer : MonoBehaviour
     private void Update()
     {
         cGroup.alpha = playerInput.IsCursorLocked ? 1 : 0;
-        if (timelinePlayer.Current == null)
+        if (timelinePlayer.Current == null || !playerInput.IsCursorLocked)
             return;
         timelinePlayer.FastForwardInput = fastForwardPartInputCache.IsPressed();
         timelinePlayer.RewindInput = rewindPartInputCache.IsPressed();

@@ -12,7 +12,8 @@ public class PlayerInput : MonoBehaviour
     [Header("Parameters")]
     [SerializeField] private bool lockCursor = true;
     [SerializeField] private bool lockGameplayWhenCursorIsVisible = true;
-    
+
+    private PauseMenu pauseMenu;
     private PlayerController playerController;
     private InteractionSystem interactionSystem;
     private PlayerCamera playerCamera;
@@ -27,6 +28,7 @@ public class PlayerInput : MonoBehaviour
 
     private void Awake()
     {
+        pauseMenu = FindObjectOfType<PauseMenu>();
         playerController = GetComponent<PlayerController>();
         interactionSystem = GetComponent<InteractionSystem>();
         playerCamera = GetComponent<PlayerCamera>();
@@ -55,6 +57,8 @@ public class PlayerInput : MonoBehaviour
         lockCursor = !Fungus.SayDialog.GetSayDialog().gameObject.activeSelf;
         lockCursor &= !Fungus.MenuDialog.GetMenuDialog().gameObject.activeSelf;
 
+        if (pauseMenu != null && pauseMenu.IsPaused)
+            lockCursor = false;
         if (isForcedCursor)
             lockCursor = false;
         
