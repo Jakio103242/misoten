@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UniRx;
 using Cysharp.Threading.Tasks;
 using Game.Input;
 using Game.Story;
@@ -17,11 +18,12 @@ namespace Game.Intaract
         [SerializeField] float displayDistance;
         [SerializeField] float investigateDistance;
         [SerializeField] Transform playerTransform;
+        [SerializeField] 
         int nearestIndex = -1;
 
         public Intaractable NearestIntaractableObject()
         {
-            if(nearestIndex < 0 || !intaractables[nearestIndex].StoryIncident().Active) return null;
+            if(nearestIndex < 0 || !intaractables[nearestIndex].StoryIncident.Active) return null;
             float distance;
             distance = (playerTransform.position - intaractables[nearestIndex].transform.position).sqrMagnitude;
             if(distance * distance > investigateDistance * investigateDistance) return null;
@@ -31,6 +33,10 @@ namespace Game.Intaract
         void Start()
         {
             OnCheckVisibleCamera(this.GetCancellationTokenOnDestroy()).Forget();
+            foreach(var intaractable in intaractables)
+            {
+                intaractable.OnHintActive.Subscribe(_ => {});
+            }
         }
 
         void Update()
@@ -56,7 +62,7 @@ namespace Game.Intaract
                 intaractables[index].HintActive = false;
 
                 if(intaractables[index].Completed) continue;
-                if(!intaractables[index].StoryIncident().Active) continue;
+                if(!intaractables[index].StoryIncident.Active) continue;
 
                 distance = (playerTransform.position - intaractables[index].transform.position).sqrMagnitude;
                 if(distance * distance > displayDistance * displayDistance) continue;

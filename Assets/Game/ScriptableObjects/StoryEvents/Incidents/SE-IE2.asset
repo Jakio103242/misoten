@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storyEvent: {fileID: 11400000, guid: 04ff1f0c5d609344383bfeb9da0a5313, type: 2}
   ratio: 10
-  Active: 1
+  Active: 0
   completed:
     value: 0
-  DialogueData: {fileID: 11400000, guid: aa71261f46a3c4245bbda4327619a497, type: 2}
+  InvestigationData: {fileID: 11400000, guid: 1dfb0b98efad57c4db490a02366d7b8c, type: 2}

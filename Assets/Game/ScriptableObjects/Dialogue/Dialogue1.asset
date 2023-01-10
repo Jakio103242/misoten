@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Dialogue1
   m_EditorClassIdentifier: 
   dialogue:
-  - name: bob
-    quote: good
-  - name: 
-    quote: 
-  - name: 
-    quote: 
-  - name: 
-    quote: 
+  - name: Bob
+    quote: gooddddddddddd
+  - name: Imady
+    quote: exactly
+  - name: a
+    quote: a
+  - name: a
+    quote: a

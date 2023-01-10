@@ -8,21 +8,28 @@ namespace Game.Intaract
     public abstract class Intaractable : MonoBehaviour
     {
         public Renderer Renderer;
-        public bool HintActive;
-        [SerializeField] private ReactiveProperty<bool> completed;
+        [SerializeField] protected ReactiveProperty<bool> hintActive;
+        public bool HintActive
+        {
+            get => hintActive.Value;
+            set => hintActive.Value = value;
+        }
+        public IObservable<bool> OnHintActive => hintActive;
+        [SerializeField] protected ReactiveProperty<bool> completed;
         public bool Completed
         {
             get => completed.Value;
             set => completed.Value = value;
         }
 
-        public abstract StoryIncident StoryIncident();
+        [SerializeField] protected StoryIncident storyIncident;
+        public StoryIncident StoryIncident => storyIncident;
 
         void Start()
         {
-            HintActive = false;
+            hintActive.Value = false;
             completed.Value = false;
-            completed.Where(value => value).Subscribe(_ => StoryIncident().Completed = true);
+            completed.Where(value => value).Subscribe(_ => storyIncident.Completed = true);
         }
     }
 }

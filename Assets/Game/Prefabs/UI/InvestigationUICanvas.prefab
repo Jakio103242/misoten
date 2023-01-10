@@ -251,10 +251,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2a01b117ced114d87c9d87a9b5642c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InvestigationDisplay:
+  display:
     value: 0
-  NameText: {fileID: 3750679179287833662}
-  InvestigationText: {fileID: 3750679178002481420}
+  nameText: {fileID: 3750679179287833662}
+  investigationText: {fileID: 3750679178002481420}
+  duration: 0.2
 --- !u!1 &3750679179287833661
 GameObject:
   m_ObjectHideFlags: 0

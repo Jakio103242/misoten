@@ -1,80 +1,78 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
-using System.Threading;
-using UnityEngine.InputSystem;
 using UniRx;
 using TMPro;
-public class InvestigationUI : MonoBehaviour
+using DG.Tweening;
+using Game.Data;
+
+namespace Game.UI
 {
-    [SerializeField]
-    BoolReactiveProperty InvestigationDisplay = new BoolReactiveProperty(false);
-
-    [SerializeField]
-    private TextMeshProUGUI NameText;
-
-    [SerializeField]
-    private TextMeshProUGUI InvestigationText;
-
-    TextMeshProUGUI nametext;
-    TextMeshProUGUI investigationText;
-
-    private bool calledOnce;
-
-    private void Start()
+    public class InvestigationUI : MonoBehaviour
     {
-        nametext = NameText.GetComponent<TextMeshProUGUI>();
-        investigationText = InvestigationText.GetComponent<TextMeshProUGUI>();
+        [SerializeField]
+        private BoolReactiveProperty display = new BoolReactiveProperty(false);
+        //public bool Display => display.Value;
+        //public IObservable<bool> OnInvestigationDisplay => display;
 
-        //UI非表示
-        nametext.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-        investigationText.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+        [SerializeField]
+        private TextMeshProUGUI nameText;
 
-        calledOnce = false;
-        Debug.Log(InvestigationDisplay.Value);
-    }
+        [SerializeField]
+        private TextMeshProUGUI investigationText;
 
-    void Update()
-    {
-        ////デバッグ用
-        //if (Mouse.current.leftButton.wasPressedThisFrame)
-        //{
-        //    SetBoolInvestigationDisplay(true);
-        //}
+        //for text animation
+        [Header("Text Animation"), SerializeField] private float duration;
+        private float alpha;
 
+        private bool inAnimation;
 
-        //InvestigationDisplayの値がtrueのときのみ処理を行う
-        if (InvestigationDisplay.Value == true && calledOnce == false)
+        private void Start()
         {
-            ShowInvestigationUI(this.GetCancellationTokenOnDestroy()).Forget();
+            alpha = 0.0f;
+            //UI Color Settings
+            nameText.color = new Color(investigationText.color.r, investigationText.color.g, investigationText.color.b, alpha);
+            investigationText.color = new Color(investigationText.color.r, investigationText.color.g, investigationText.color.b, alpha);
+
+            display.Value = false;
+            inAnimation = false;
+
+            display.Where(value => value).Subscribe(_ => ActiveAnimation()).AddTo(this);
+            display.Where(value => !value).Subscribe(_ => InactiveAnimation()).AddTo(this);
         }
 
-    }
+        void Update()
+        {
+            UpdateColor();
+        }
 
-    //表示フラグを変更する
-    public void SetBoolInvestigationDisplay(bool setbool)
-    {
-        InvestigationDisplay.Value = setbool;
-    }
+        private void UpdateColor()
+        {
+            nameText.color = new Color(investigationText.color.r, investigationText.color.g, investigationText.color.b, alpha);
+            investigationText.color = new Color(investigationText.color.r, investigationText.color.g, investigationText.color.b, alpha);
+        }
 
-    //調査UIを表示する
-    private async UniTask ShowInvestigationUI(CancellationToken token)
-    {
-        //UI表示
-        nametext.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-        investigationText.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        public void OnDisplay(InvestigationData investigationData)
+        {
+            display.Value = true;
+            nameText.text = investigationData.Info.name;
+            investigationText.text = investigationData.Info.explanation;
+        }
+        public void NonDisplay()
+        {
+            display.Value = false;
+        }
 
-        //範囲外に出たら消す（今はスペースキーで代用）
-        await UniTask.WaitUntil(() => Keyboard.current.spaceKey.wasPressedThisFrame || InvestigationDisplay.Value == false, cancellationToken: token);
+        private void ActiveAnimation()
+        {
+            inAnimation = true;
+            DOTween.To(() => alpha, x => alpha = x, 1.0f, duration).OnComplete(() => inAnimation = false).Play();
+        }
 
-        //UI非表示
-        nametext.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-        investigationText.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-
-        InvestigationDisplay.Value = false;
-        calledOnce = false;
-
+        private void InactiveAnimation()
+        {
+            inAnimation = true;
+            DOTween.To(() => alpha, x => alpha = x, 0.0f, duration).OnComplete(() => inAnimation = false).Play();
+        }
     }
 }

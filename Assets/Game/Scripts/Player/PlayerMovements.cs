@@ -42,7 +42,7 @@ namespace Game.Player
         void Awake()
         {
             input.OnMove.Subscribe(value => Move(value)).AddTo(this);
-            input.OnDash.Subscribe(_ => Dash()).AddTo(this);
+            //input.OnDash.Subscribe(_ => Dash()).AddTo(this);
             input.OnWalk.Subscribe(_ => Walk()).AddTo(this);
         }
     

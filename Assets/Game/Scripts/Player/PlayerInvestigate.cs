@@ -1,32 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine;
+using UniRx;
 using Game.Input;
 using Game.Intaract;
-using Game.Story;
+using Game.UI;
 
 public class PlayerInvestigate : MonoBehaviour
 {
-    [SerializeField] InputReader input;
-    [SerializeField] DialogueManager dialogueManager;
-    [SerializeField] ObjectManager objectManager;
+    [SerializeField] private InputReader input;
+    [SerializeField] private InvestigationUI investigationUI;
+    [SerializeField] private DialogueUI dialogueUI;
+    [SerializeField] private ObjectManager objectManager;
 
-    void Start()
+    private void Start()
     {
-        // input
+        input.OnInvestigate.Subscribe(_ => OnInvestigate()).AddTo(this);
     }
 
-    void Update()
+    private void OnInvestigate()
     {
-        if(Keyboard.current.spaceKey.wasPressedThisFrame)
+        Intaractable intaractableObject = objectManager.NearestIntaractableObject();
+        if(intaractableObject != null)
         {
-            Intaractable investigatable = objectManager.NearestIntaractableObject();
-            if(investigatable != null)
+            intaractableObject.Completed = true;
+            if(intaractableObject.GetType() == typeof(Investigatable))
             {
-                //dialogueManager.SetDialogue(((StoryInvestigationEvent)investigatableObject.StoryIncident()).DialogueData);
-                investigatable.Completed = true;
+                investigationUI.OnDisplay(((Investigatable)intaractableObject).GetInvestigationData());
             }
+            if(intaractableObject.GetType() == typeof(Talkable))
+            {
+                dialogueUI.OnDisplay(((Talkable)intaractableObject).GetDialogueData());
+            }
+            return;
         }
+        investigationUI.NonDisplay();
+        dialogueUI.NonDisplay();
     }
 }
