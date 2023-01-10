@@ -33,9 +33,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Dash",
+                    "name": "Investigate",
                     "type": "Button",
-                    "id": "fb73559e-f1e8-4ddd-97ea-fb4748c376e1",
+                    "id": "56e58141-6c86-4d87-ab0f-6c8abfc33538",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -221,12 +221,12 @@
                 },
                 {
                     "name": "",
-                    "id": "df7c2e75-4061-4456-82a9-9b5a4665a2cb",
-                    "path": "<Keyboard>/leftShift",
+                    "id": "6b2734fc-a0f3-4ffc-8ed2-a02d687ed94b",
+                    "path": "<Keyboard>/#(F)",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Dash",
+                    "action": "Investigate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

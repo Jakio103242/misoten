@@ -15,14 +15,14 @@ namespace Game.Input {
         private readonly ReactiveProperty<Vector2> move = new ReactiveProperty<Vector2>(Vector2.zero);
         private readonly ReactiveProperty<Vector2> look = new ReactiveProperty<Vector2>(Vector2.zero);
         private readonly Subject<Unit> onTalk = new Subject<Unit>();
-        private readonly Subject<Unit> onDash = new Subject<Unit>();
         private readonly Subject<Unit> onWalk = new Subject<Unit>();
+        private readonly Subject<Unit> onInvestigate = new Subject<Unit>();
 
         public IObservable<Vector2> OnMove => move;
         public IObservable<Vector2> OnLook => look;
         public IObservable<Unit> OnTalk => onTalk;
-        public IObservable<Unit> OnDash => onDash;
         public IObservable<Unit> OnWalk => onWalk;
+        public IObservable<Unit> OnInvestigate => onInvestigate;
 
         public void EnableGameplayInput() 
         {
@@ -67,15 +67,11 @@ namespace Game.Input {
             }
         }
 
-        void GameInputs.IPlayerActions.OnDash(InputAction.CallbackContext ctx) 
+        void GameInputs.IPlayerActions.OnInvestigate(InputAction.CallbackContext ctx)
         {
             if(ctx.phase == InputActionPhase.Started)
             {
-                onDash.OnNext(Unit.Default);
-            }
-            else if(ctx.phase == InputActionPhase.Canceled)
-            {
-                onWalk.OnNext(Unit.Default);
+                onInvestigate.OnNext(Unit.Default);
             }
         }
     }

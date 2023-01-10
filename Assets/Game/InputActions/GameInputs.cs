@@ -55,9 +55,9 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Dash"",
+                    ""name"": ""Investigate"",
                     ""type"": ""Button"",
-                    ""id"": ""fb73559e-f1e8-4ddd-97ea-fb4748c376e1"",
+                    ""id"": ""56e58141-6c86-4d87-ab0f-6c8abfc33538"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -243,12 +243,12 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""df7c2e75-4061-4456-82a9-9b5a4665a2cb"",
-                    ""path"": ""<Keyboard>/leftShift"",
+                    ""id"": ""6b2734fc-a0f3-4ffc-8ed2-a02d687ed94b"",
+                    ""path"": ""<Keyboard>/#(F)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Dash"",
+                    ""action"": ""Investigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -839,7 +839,7 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Talk = m_Player.FindAction("Talk", throwIfNotFound: true);
-        m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
+        m_Player_Investigate = m_Player.FindAction("Investigate", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -914,7 +914,7 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Talk;
-    private readonly InputAction m_Player_Dash;
+    private readonly InputAction m_Player_Investigate;
     public struct PlayerActions
     {
         private @GameInputs m_Wrapper;
@@ -922,7 +922,7 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Talk => m_Wrapper.m_Player_Talk;
-        public InputAction @Dash => m_Wrapper.m_Player_Dash;
+        public InputAction @Investigate => m_Wrapper.m_Player_Investigate;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -941,9 +941,9 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
                 @Talk.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTalk;
                 @Talk.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTalk;
                 @Talk.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTalk;
-                @Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
-                @Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
-                @Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @Investigate.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInvestigate;
+                @Investigate.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInvestigate;
+                @Investigate.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInvestigate;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -957,9 +957,9 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
                 @Talk.started += instance.OnTalk;
                 @Talk.performed += instance.OnTalk;
                 @Talk.canceled += instance.OnTalk;
-                @Dash.started += instance.OnDash;
-                @Dash.performed += instance.OnDash;
-                @Dash.canceled += instance.OnDash;
+                @Investigate.started += instance.OnInvestigate;
+                @Investigate.performed += instance.OnInvestigate;
+                @Investigate.canceled += instance.OnInvestigate;
             }
         }
     }
@@ -1119,7 +1119,7 @@ public partial class @GameInputs : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnTalk(InputAction.CallbackContext context);
-        void OnDash(InputAction.CallbackContext context);
+        void OnInvestigate(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
