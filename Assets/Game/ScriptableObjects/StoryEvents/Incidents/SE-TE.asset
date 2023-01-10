@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7869ac507306789428583c0ebcf6f2e6, type: 3}
-  m_Name: SE-IE3
+  m_Script: {fileID: 11500000, guid: e5a1272e0ad849944a37d3d528c2fc84, type: 3}
+  m_Name: SE-TE
   m_EditorClassIdentifier: 
-  storyEvent: {fileID: 11400000, guid: 3919a0e59bf6a7746a9cdd3cc0fd3853, type: 2}
-  ratio: 10
-  Active: 0
+  storyEvent: {fileID: 0}
+  ratio: 0
+  Active: 1
   completed:
     value: 0
-  InvestigationData: {fileID: 11400000, guid: 1dfb0b98efad57c4db490a02366d7b8c, type: 2}
+  DialogueData: {fileID: 11400000, guid: aa71261f46a3c4245bbda4327619a497, type: 2}
