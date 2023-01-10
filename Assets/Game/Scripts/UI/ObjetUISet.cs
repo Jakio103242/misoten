@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Game.UI;
 
 public class ObjetUISet : MonoBehaviour
 {
@@ -16,12 +17,12 @@ public class ObjetUISet : MonoBehaviour
     private bool display;
 
     InvestigationUI invesScript;
-    SerifDisplay serifScript;
+    DialogueUI serifScript;
 
     void Start()
     {
         invesScript = InvesUI.GetComponent<InvestigationUI>();
-        serifScript = SerifUI.GetComponent<SerifDisplay>();
+        serifScript = SerifUI.GetComponent<DialogueUI>();
         display = false;
     }
 
@@ -37,7 +38,7 @@ public class ObjetUISet : MonoBehaviour
     {
         if (other.gameObject.name == "Eda")
         {
-            invesScript.SetBoolInvestigationDisplay(true);
+            //invesScript.SetBoolInvestigationDisplay(true);
             display = true;
         }
     }
@@ -46,7 +47,7 @@ public class ObjetUISet : MonoBehaviour
     {
         if (other.gameObject.name == "Eda")
         {
-            invesScript.SetBoolInvestigationDisplay(false);
+            // invesScript.SetBoolInvestigationDisplay(false);
             display = false;
         }
     }

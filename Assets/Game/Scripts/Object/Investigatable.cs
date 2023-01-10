@@ -1,11 +1,10 @@
-﻿using UnityEngine;
-using Game.Story;
+﻿using Game.Story;
+using Game.Data;
 
 namespace Game.Intaract
 {
     public class Investigatable : Intaractable
     {
-        [SerializeField] private StoryInvestigationEvent storyIncident;
-        public override StoryIncident StoryIncident() => storyIncident;
+        public InvestigationData GetInvestigationData() => ((StoryInvestigationEvent)storyIncident).InvestigationData;
     }
 }

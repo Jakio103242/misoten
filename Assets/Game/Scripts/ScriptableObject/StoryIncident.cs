@@ -11,7 +11,7 @@ namespace Game.Story
         [SerializeField] protected float ratio;
         public float Ratio => ratio;
         public bool Active;
-        [SerializeField] private ReactiveProperty<bool> completed;
+        [SerializeField] protected ReactiveProperty<bool> completed;
         public bool Completed
         {
             get => completed.Value;

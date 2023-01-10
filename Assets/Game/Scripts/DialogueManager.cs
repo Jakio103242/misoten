@@ -22,7 +22,7 @@ public class DialogueManager : MonoBehaviour
         {
             if(objectManager.Intaractables[index].HintActive)
             {
-                SetDialogue(index, ((StoryInvestigationEvent)objectManager.Intaractables[index].StoryIncident()).DialogueData);
+                //SetDialogue(index, objectManager.Intaractables[index].StoryIncident().DialogueData);
             }
             else
             {

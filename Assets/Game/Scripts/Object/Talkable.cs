@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using Game.Story;
+using Game.Data;
 
 namespace Game.Intaract
 {
-    public class Talkable : Intaractable
+    public sealed class Talkable : Intaractable
     {
-        public StoryTalkEvent storyIncident;
-        public override StoryIncident StoryIncident() => storyIncident;
+        public DialogueData GetDialogueData() => ((StoryTalkEvent)storyIncident).DialogueData;
     }
 }

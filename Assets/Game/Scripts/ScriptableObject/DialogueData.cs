@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Data {
-    [CreateAssetMenu(fileName = "Dialogue", menuName = "GameSO/Dialogue")]
+    [CreateAssetMenu(fileName = "DialogueData", menuName = "GameSO/DialogueData")]
     public class DialogueData : ScriptableObject
     {
         [System.Serializable]
-        public struct DialogueStatus
+        public struct DialogueInfo
         {
             public string name;
-            [TextArea(1, 3)] public string quote;
+            public string quote;
         }
 
-        [SerializeField] private List<DialogueStatus> dialogue;
-        public List<DialogueStatus> Dialogue => dialogue;
+        [SerializeField] private List<DialogueInfo> dialogue;
+        public List<DialogueInfo> Dialogue => dialogue;
     }
 }

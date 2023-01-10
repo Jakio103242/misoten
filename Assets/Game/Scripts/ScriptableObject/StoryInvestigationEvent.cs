@@ -6,6 +6,6 @@ namespace Game.Story
     [CreateAssetMenu(fileName = "SE-IE", menuName = "GameSO/StoryInvestigationEvent")]
     public class StoryInvestigationEvent : StoryIncident
     {
-        public DialogueData DialogueData;
+        public InvestigationData InvestigationData;
     }
 }
